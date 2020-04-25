@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../../App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n\timport Button from './Button.svelte';\n\timport ButtonWithRestProps from './ButtonWithRestProps.svelte'\n\timport ButtonWithSpreadAttributes from './ButtonWithSpreadAttributes.svelte'\n\n\tlet disabled = false;\n</script>\n\n<main>\n\t<div>\n\t\t<input type=\"checkbox\" bind:checked={disabled} id=\"disabled-checkbox\">\n\t\t<label for=\"disabled-checkbox\">Disabled?</label>\n\t</div>\n\n\t<Button\n\t\t{disabled}\n\t\tid=\"my-button\"\n\t\tmethod=\"random\"\n\t>This is a regular button</Button>\n\n\t<ButtonWithRestProps\n\t\t{disabled}\n\t\tid=\"my-button\"\n\t\tmethod=\"random\"\n\t>This is a button with $$restProps</ButtonWithRestProps>\n\n\t<ButtonWithSpreadAttributes\n\t\t{disabled}\n\t\tid=\"my-button\"\n\t\tattributes={{ method: 'random' }}\n\t>This is a button with spread attributes props</ButtonWithSpreadAttributes>\n</main>\n\n<style>\n\tlabel {\n\t\tdisplay: inline-block;\n\t\tcursor: pointer;\n\t}\n</style>"
+  ],
+  "names": [],
+  "mappings": "AAkCC,KAAK,cAAC,CAAC,AACN,OAAO,CAAE,YAAY,CACrB,MAAM,CAAE,OAAO,AAChB,CAAC"
+}
