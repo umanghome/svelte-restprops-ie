@@ -1,27 +1,38 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+# Bug
 
----
+There's a bug where the `disabled` property on `button` doesn't work on IE 11. I'm unsure if there are more elements/attributes which also break, but this is something specific that I came across.
 
-# svelte app
+The demo from this code is hosted at [https://umanghome.github.io/svelte-restprops-ie/](https://umanghome.github.io/svelte-restprops-ie/). It has all the polyfills required for this project to work on IE 11.
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+## Expected
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+App after initial render:
+![App after initial render](https://i.imgur.com/g5jjTDi.png)
 
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
+App after selecting the disabled? checkbox:
+![App after selecting the disabled? checkbox](https://i.imgur.com/3XXJYHe.png)
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+The expected behaviour can be reproduced on Chrome 81.
 
+## Actual behaviour
+
+App after initial render:
+![App after initial render](https://i.imgur.com/4VXd7Cd.png)
+
+App after selecting the disabled? checkbox:
+![App after selecting the disabled? checkbox](https://i.imgur.com/Mbc9HqJ.png)
+
+Even if the disabled? is toggled back into a "false" state, the latter two buttons stay disabled.
+
+The expected behaviour can be reproduced on Internet Exporer 11. It cannot be reproduced on Chrome 81.
+
+--- 
 
 ## Get started
 
 Install the dependencies...
 
 ```bash
-cd svelte-app
 npm install
 ```
 
@@ -45,49 +56,3 @@ npm run build
 ```
 
 You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
-
-
-## Single-page app mode
-
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
-
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
-
-```js
-"start": "sirv public --single"
-```
-
-
-## Deploying to the web
-
-### With [now](https://zeit.co/now)
-
-Install `now` if you haven't already:
-
-```bash
-npm install -g now
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-now deploy --name my-project
-```
-
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
